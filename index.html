@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Streaks is a calm, motivating space to keep the promises you make to yourself.">
+  <title>Streaks — show up for yourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Streaks home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>streaks</span>
+      </a>
+      <div class="topbar-actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">☼</button>
+        <button class="avatar" type="button" aria-label="Your profile">AK</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow"><span class="live-dot"></span> Your consistency cockpit</p>
+          <h1>Small steps.<br><span class="gradient-text">Big momentum.</span></h1>
+          <p class="hero-copy">Keep the promises you make to yourself. One checked box at a time.</p>
+        </div>
+        <div class="hero-orb" aria-hidden="true"><span>✦</span></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Your progress">
+        <article class="stat-card stat-card-primary">
+          <div class="stat-icon">🔥</div>
+          <div><p class="stat-label">Total momentum</p><p class="stat-value" id="total-days">0 <small>days</small></p></div>
+          <span class="stat-trend" id="week-trend">+0 this week</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon purple">✦</div>
+          <div><p class="stat-label">Best streak</p><p class="stat-value" id="best-streak">0 <small>days</small></p></div>
+          <span class="stat-caption" id="best-name">Start your first one</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon green">◌</div>
+          <div><p class="stat-label">Today's progress</p><p class="stat-value" id="today-progress">0<small> / 0</small></p></div>
+          <span class="stat-caption" id="today-label">Nothing checked yet</span>
+        </article>
+      </section>
+
+      <section class="section-heading">
+        <div>
+          <p class="eyebrow">Your rituals</p>
+          <h2>Keep the chain alive</h2>
+        </div>
+        <button class="button button-primary" id="add-streak" type="button"><span>+</span> New streak</button>
+      </section>
+
+      <section class="streak-list" id="streak-list" aria-live="polite"></section>
+
+      <section class="section-heading activity-heading">
+        <div>
+          <p class="eyebrow">Your year in pixels</p>
+          <h2>Consistency looks good on you</h2>
+        </div>
+        <span class="activity-total" id="activity-total">0 check-ins</span>
+      </section>
+      <section class="activity-card">
+        <div class="activity-meta"><span id="activity-start"></span><span>Less <i class="legend level-0"></i><i class="legend level-1"></i><i class="legend level-2"></i><i class="legend level-3"></i><i class="legend level-4"></i> More</span></div>
+        <div class="heatmap-wrap"><div class="weekday-labels"><span>Mon</span><span>Wed</span><span>Fri</span></div><div class="heatmap" id="heatmap" role="img" aria-label="Activity heatmap"></div></div>
+        <div class="activity-footer"><span>Showing the last 365 days</span><span id="activity-streak">Keep going — your future self is watching ✨</span></div>
+      </section>
+
+      <section class="tool-row">
+        <div><p class="eyebrow">Your data, your rules</p><p>Everything stays in this browser. Take it with you anytime.</p></div>
+        <div class="tool-actions"><button class="button button-ghost" id="export-data" type="button">↓ Export data</button><button class="button button-ghost" id="import-data" type="button">↑ Import data</button><input id="import-file" type="file" accept="application/json" hidden></div>
+      </section>
+    </main>
+    <footer><span>Made for showing up.</span><span>Private by default · No account needed</span></footer>
+  </div>
+
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">A promise to yourself</p><h2 id="modal-title">Start a new streak</h2>
+      <form id="streak-form">
+        <label for="streak-name">What do you want to make a habit?</label>
+        <input id="streak-name" name="name" type="text" placeholder="e.g. Read for 30 minutes" maxlength="48" required>
+        <label for="streak-icon">Pick a vibe</label>
+        <div class="icon-picker" id="icon-picker"><button type="button" class="selected" data-icon="📚">📚</button><button type="button" data-icon="🚶">🚶</button><button type="button" data-icon="🧘">🧘</button><button type="button" data-icon="💧">💧</button><button type="button" data-icon="🎨">🎨</button><button type="button" data-icon="💪">💪</button></div>
+        <input id="streak-icon" type="hidden" value="📚">
+        <button class="button button-primary button-wide" type="submit">Create streak <span>→</span></button>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
